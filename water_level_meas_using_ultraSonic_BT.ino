@@ -26,14 +26,15 @@ void loop()
      {
        data[i]=Serial2.read();
      }
-  }while(Serial2.read()==0xff);
+  }while(Serial2.read()==0xff);//reading the data untill 4 bytes is full(1020)
 
-  Serial2.flush();
+  Serial2.flush();//it will wait until previous data read successfully
 
-  if(data[0]==0xff)
+
+  if(data[0]==0xff)//if data on 0 position is 255; 
     {
       int sum;
-      sum=(data[0]+data[1]+data[2])&0x00FF;
+      sum=(data[0]+data[1]+data[2])&0x00FF;//that is syntax
       if(sum==data[3])
       {
         distance=(data[1]<<8)+data[2];
